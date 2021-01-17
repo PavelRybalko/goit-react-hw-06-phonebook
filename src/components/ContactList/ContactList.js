@@ -26,8 +26,8 @@ const ContactList = ({ contacts, filter }) => {
 };
 
 const mapStateToProps = state => ({
-  filter: state.filter,
-  contacts: state.contacts,
+  filter: state.contacts.filter,
+  contacts: state.contacts.items,
 });
 
 export default connect(mapStateToProps, null)(ContactList);

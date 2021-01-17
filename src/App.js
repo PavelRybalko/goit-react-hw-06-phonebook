@@ -21,8 +21,8 @@ function App({ contacts }) {
 
 //Пропсы которые будут приходить в компонент
 const mapStateToProps = state => ({
-  contacts: state.contacts,
-  filter: state.filter,
+  contacts: state.contacts.items,
+  filter: state.contacts.filter,
 });
 
 export default connect(mapStateToProps, null)(App);

@@ -11,7 +11,7 @@ const Filter = ({ filter, onChange }) => (
   </label>
 );
 
-const mapStateToProps = state => ({ filter: state.filter });
+const mapStateToProps = state => ({ filter: state.contacts.filter });
 const mapDispatchToProps = dispatch => ({
   onChange: filter => dispatch(changeFilter(filter)),
 });

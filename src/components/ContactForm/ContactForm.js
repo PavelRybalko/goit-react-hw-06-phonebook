@@ -85,7 +85,7 @@ function ContactForm({ contacts, onSubmit }) {
 }
 
 const mapStateToProps = state => ({
-  contacts: state.contacts,
+  contacts: state.contacts.items,
 });
 
 const mapDispatchToProps = dispatch => ({

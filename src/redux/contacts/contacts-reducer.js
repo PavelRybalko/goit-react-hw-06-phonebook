@@ -32,6 +32,6 @@ const filterReducer = (state = '', { type, payload }) => {
 };
 
 export default combineReducers({
-  contacts: contactsReducer,
+  items: contactsReducer,
   filter: filterReducer,
 });
