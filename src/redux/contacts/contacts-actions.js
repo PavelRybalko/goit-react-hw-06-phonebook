@@ -13,7 +13,7 @@ export const deleteContact = contactId => ({
   payload: contactId,
 });
 
-export const changeFilter = event => ({
+export const changeFilter = value => ({
   type: actionTypes.CHANGE_FILTER,
-  payload: event.currentTarget.value,
+  payload: value,
 });

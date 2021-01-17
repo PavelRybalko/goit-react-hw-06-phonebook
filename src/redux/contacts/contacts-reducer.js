@@ -10,7 +10,7 @@ const initialState = localStorageData ?? [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-const contactsReducer = (state = initialState, { type, payload }) => {
+const items = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD:
       return [...state, payload];
@@ -22,7 +22,7 @@ const contactsReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-const filterReducer = (state = '', { type, payload }) => {
+const filter = (state = '', { type, payload }) => {
   switch (type) {
     case actionTypes.CHANGE_FILTER:
       return payload;
@@ -32,6 +32,6 @@ const filterReducer = (state = '', { type, payload }) => {
 };
 
 export default combineReducers({
-  items: contactsReducer,
-  filter: filterReducer,
+  items,
+  filter,
 });

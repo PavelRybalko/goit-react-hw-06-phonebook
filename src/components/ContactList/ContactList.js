@@ -4,20 +4,12 @@ import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import ContactItem from '../ContactItem';
 
-const ContactList = ({ contacts, filter }) => {
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter),
-    );
-  };
-
+const ContactList = ({ contacts }) => {
   return (
     <>
       <h2 className={s.title}>Contacts</h2>
       <ul className={s.ContactList}>
-        {getVisibleContacts(contacts).map(contact => (
+        {contacts.map(contact => (
           <ContactItem key={contact.id} contact={contact} />
         ))}
       </ul>
@@ -25,9 +17,16 @@ const ContactList = ({ contacts, filter }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  filter: state.contacts.filter,
-  contacts: state.contacts.items,
+const getVisibleContacts = (allContacts, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+
+  return allContacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedFilter),
+  );
+};
+
+const mapStateToProps = ({ contacts: { items, filter } }) => ({
+  contacts: getVisibleContacts(items, filter),
 });
 
 export default connect(mapStateToProps, null)(ContactList);

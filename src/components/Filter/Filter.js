@@ -12,8 +12,9 @@ const Filter = ({ filter, onChange }) => (
 );
 
 const mapStateToProps = state => ({ filter: state.contacts.filter });
+
 const mapDispatchToProps = dispatch => ({
-  onChange: filter => dispatch(changeFilter(filter)),
+  onChange: event => dispatch(changeFilter(event.currentTarget.value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
