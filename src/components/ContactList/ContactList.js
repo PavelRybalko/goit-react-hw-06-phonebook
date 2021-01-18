@@ -29,7 +29,7 @@ const mapStateToProps = ({ contacts: { items, filter } }) => ({
   contacts: getVisibleContacts(items, filter),
 });
 
-export default connect(mapStateToProps, null)(ContactList);
+export default connect(mapStateToProps)(ContactList);
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
