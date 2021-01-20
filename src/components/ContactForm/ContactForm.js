@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import actions from '../../redux/contacts/contacts-actions';
-import PropTypes from 'prop-types';
+import { getItems } from '../../redux/contacts/contacts-selectors';
 import s from './ContactForm.module.css';
 
-// const INITIAL_STATE = { name: "", number: "" };
-
-function ContactForm({ contacts, onSubmit }) {
+function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getItems);
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -32,7 +32,7 @@ function ContactForm({ contacts, onSubmit }) {
 
     const isValidatedForm = validateForm();
     if (!isValidatedForm) return;
-    onSubmit(name, number);
+    dispatch(actions.addContact(name, number));
 
     setName('');
     setNumber('');
@@ -84,16 +84,4 @@ function ContactForm({ contacts, onSubmit }) {
   );
 }
 
-const mapStateToProps = state => ({
-  contacts: state.contacts.items,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onSubmit: (name, number) => dispatch(actions.addContact(name, number)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+export default ContactForm;

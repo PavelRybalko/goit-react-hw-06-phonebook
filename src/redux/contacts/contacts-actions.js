@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 import shortid from 'shortid';
 
-const addContact = createAction('app/addContact', text => ({
-  payload: { id: shortid.generate(), text },
+const addContact = createAction('app/addContact', (name, number) => ({
+  payload: { id: shortid.generate(), name, number },
 }));
 
 const deleteContact = createAction('app/deleteContact');
